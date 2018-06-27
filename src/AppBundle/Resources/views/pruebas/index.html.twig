@@ -1,0 +1,36 @@
+{% extends "layout.html.twig" %}
+{% block container %}
+    {{texto}}
+    <hr>
+    {{frutas.pera}}
+    {% if frutas.pera == "rica" %}
+    	{{ frutas.manzana }}
+    {% endif %}
+    <hr>
+    {% set variable = "hola Twig" %}
+    {{variable}}
+    <hr>
+    {% if productos|length > 9 %}
+        <ul>
+      		{% for producto in productos %}
+        	    <li>{{ producto.producto }} - {{ producto.Precio}}</li>
+            {% endfor %}
+    	</ul>    
+	{% endif %}
+	<hr>
+	{% set fecha = date("-2 days","Europe/Madrid") %}
+	{{ fecha.date|date("d-m-Y") }}
+	<hr>
+	{{ include("@App/pruebas/partial.html.twig")}}
+	{{ min([76,99,58]) }}
+	<hr>
+	{{ random(1000) }}
+	<hr>
+	{% for i in range(0,25,3) %}
+        {{ i }}<br>
+    {% endfor %}
+    <hr>
+    {{ generateTable(productos)|raw}}
+    <hr>
+    {{ "cadena de texto"|addText(5)}}
+{% endblock %}
