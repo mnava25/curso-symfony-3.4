@@ -23,7 +23,7 @@ class PruebasController extends Controller
             array("producto" => "Consola 4","Precio"=>5),
             array("producto" => "Consola 5","Precio"=>6)
         );
-        $frutas = array("manzana"=>"golden","pera"=>"rica");
+        $frutas = array("manzana"=>"golden","pera"=>"rica");        
         return $this->render('@App/pruebas/index.html.twig', [
             "texto" => $name." - ".$page,
             "productos" => $productos,
