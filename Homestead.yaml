@@ -1,0 +1,20 @@
+ip: 192.168.10.15
+memory: 512
+cpus: 1
+provider: virtualbox
+authorize: ~/.ssh/id_rsa.pub
+keys:
+    - ~/.ssh/id_rsa
+folders:
+    -
+        map: /home/moises-nava/cursos-fuentes/curso-symfony-3.4
+        to: /home/vagrant/code/curso-symfony
+sites:
+    -
+        map: curso-symfony.test
+        to: /home/vagrant/code/curso-symfony/web
+        type: symfony
+databases:
+    - blog
+name: curso-symfony
+hostname: curso-symfony
