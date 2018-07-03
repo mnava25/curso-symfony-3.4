@@ -4,7 +4,29 @@ login:
 login_check:
     path: /login_check
 logout:
-    path: /login
+    path: /logout
 blog_homepage:
     path:     /
     defaults: { _controller: BlogBundle:Default:index }
+
+blog_add_tag:
+    path:     /tags/add
+    defaults: { _controller: BlogBundle:Tag:add}
+blog_index_tag:
+    path:     /tags/index
+    defaults: { _controller: BlogBundle:Tag:index}
+blog_delete_tag:
+    path:     /tags/delete/{id}
+    defaults: { _controller: BlogBundle:Tag:delete}
+blog_add_category:
+    path:     /categories/add
+    defaults: { _controller: BlogBundle:Category:add}
+blog_index_category:
+    path:     /categories/index
+    defaults: { _controller: BlogBundle:Category:index}
+blog_delete_category:
+    path:     /categories/delete/{id}
+    defaults: { _controller: BlogBundle:Category:delete}
+blog_edit_category:
+    path:     /categories/edit/{id}
+    defaults: { _controller: BlogBundle:Category:edit}

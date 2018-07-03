@@ -20,7 +20,7 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#">Blog Symfony 3 !!!</a>
+					<a class="navbar-brand" href="{{ path("blog_homepage") }}">Blog Symfony 3 !!!</a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
@@ -33,11 +33,22 @@
 						{% endblock %}						
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#">
+							{% if app.user != null %}
+								Bienvenido, {{ app.user.name }} {{ app.user.surname }}
+							{% endif %}
+						</a></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
 							aria-expanded="false"><i class="glyphicon glyphicon-cog"></i> <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Entrar</a></li>
+								{% if app.user == null %}
+									<li><a href="{{ path("login") }}">Entrar</a></li>
+								{% else %}
+									<li><a href="{{ path("blog_index_tag") }}">Etiquetas</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="{{ path("logout") }}">Salir</a></li>
+								{% endif %}
 								<li role="separator" class="divider"></li>
 								<li><a href="#">Ayuda</a></li>
 							</ul></li>

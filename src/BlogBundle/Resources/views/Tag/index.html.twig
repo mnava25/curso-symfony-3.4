@@ -1,0 +1,27 @@
+{% extends "@Blog/layout.html.twig" %}
+
+{% block section %}
+	<h2>Todas la etiquetas</h2>
+	<div class="col-lg-6">
+		<a href="{{ path("blog_add_tag") }}" class="btn btn-success">A&ntilde;adir Etiqueta</a>
+    	<table class="table table-bordered">
+    		<tr>
+    			<th>Nombre</th>
+    			<th>Descripci&oacute;n</th>
+    			<th>Eliminar</th>
+    		</tr>
+			{% for tag in tags %}
+            	<tr>
+            		<td>{{ tag.name }}</td>
+            		<td>{{ tag.description }}</td>
+            		{% if tag.entryTag | length == 0 %}
+            			<td><a href="{{ path("blog_delete_tag",{"id":tag.id}) }}" class="btn btn-danger">Eliminar</a></td>
+            		{% else %}
+            			<td>Etiqueta en uso</td>
+            		{% endif %}
+            	</tr>    			
+            {% endfor %}    	
+    	</table>		
+	</div>
+	<div class="clearfix"></div>
+{% endblock %}

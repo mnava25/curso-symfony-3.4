@@ -1,0 +1,32 @@
+{% extends "@Blog/layout.html.twig" %}
+{% block section %}
+    {% if is_granted("ROLE_USER") %}
+    	<string>Estas logueado como usuario normal</string>
+    {% elseif is_granted("ROLE_ADMIN") %}
+    	<strong>Estas logueado como usuario ADMINISTRADOR todo poderoso</strong>
+    {% endif %}
+	<div class="col-lg-4">
+		<h2>Identificate</h2>
+		<hr>
+    	<form action="{{ path("login_check")}}" method="POST">
+    		<label>Email:</label>
+    		<input name="_username" id="username" type="email" value="{{ last_username }}" class="form-control"/>
+    		<br/>
+    		<label>Contrase&ntilde;a:</label>
+    		<input name="_password" id="password" type="password" class="form-control"/>
+    		<br/>
+    		<input type="submit" class="btn btn-success" value="Entrar">
+    		<input type="hidden" name="_target_path" value="/login" />
+    	</form>
+	</div>
+	<div class="col-lg-4">
+		<h2>Registrate</h2>
+		<hr>
+		{% for message in app.session.flashbag().get("status") %}
+			<div class="alert alert-success">{{ message }}</div>
+		{% endfor %}
+    	{{ form_start(form,{ 'action':'','method':'POST'}) }}
+    	{{ form_end(form) }}
+	</div>
+	<div class="clearfix"></div>
+{% endblock %}
