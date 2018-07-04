@@ -1,0 +1,14 @@
+{% extends "@Blog/layout.html.twig" %}
+
+
+{% block section %}
+    <div class="col-lg-6">
+        {% for message in app.session.flashbag().get("status") %}
+			<div class="alert alert-success">{{ message }}</div>
+		{% endfor %}
+    	<h2>A&ntilde;adir Entradas</h2>
+    	{{form_start(form,{"enctype":"multipart/form-data"})}}
+    	{{form_end(form)}}
+	</div>
+	<div class="clearfix"></div>
+{% endblock %}
