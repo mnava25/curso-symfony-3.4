@@ -6,8 +6,13 @@
         {% for message in app.session.flashbag().get("status") %}
 			<div class="alert alert-success">{{ message }}</div>
 		{% endfor %}
-    	<h2>A&ntilde;adir Entrada</h2>
+    	<h2>Editar Entrada {{entry.title}}</h2>
     	{{form_start(form,{"enctype":"multipart/form-data"})}}
+    		<label for="">Imagen</label>
+    		<img width="100px" src="{{asset("uploads/#{entry.image}")}}" alt="" />
+    		{{form_widget(form.image)}}
+    		<label for="">Etiquetas:</label>
+    		{{form_widget(form.tags,{"value":tags})}}
     	{{form_end(form)}}
 	</div>
 	<div class="clearfix"></div>

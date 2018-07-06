@@ -1,4 +1,6 @@
 {% extends "@Blog/layout.html.twig" %}
 {% block section %}
-	<h1>HELLO WORDL</h1>
+	{% for message in app.session.flashbag().get("status") %}
+		<div class="alert alert-success">{{ message }}</div>
+	{% endfor %}
 {% endblock %}
